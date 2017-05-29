@@ -16,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @EnableSwagger2
 @Controller
-public class SpringfoxConfig {
+public class SpringfoxConfiguration {
 
 	
 	@RequestMapping(value="/doc/api")

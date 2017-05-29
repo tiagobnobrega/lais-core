@@ -1,4 +1,4 @@
-package it.ninebee.lasa.laisfala.web.util;
+package it.ninebee.lasa.laisfala.web;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.ninebee.lasa.laisfala.web.exception.LaisException;
 import it.ninebee.web.util.RestEnvelopeControllerAdvise;
 
 @ControllerAdvice(annotations=RestController.class)
 @Component
-public class RestControllerAdvice extends RestEnvelopeControllerAdvise{
+public class LaisControllerAdvice extends RestEnvelopeControllerAdvise{
 
 	 @ExceptionHandler(LaisException.class)
 	  public static ResponseEntity<Object> handleBusinessExceptions(Exception ex,  HttpServletRequest request) {

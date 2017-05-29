@@ -1,4 +1,4 @@
-package it.ninebee.lasa.laisfala.web.exception;
+package it.ninebee.lasa.laisfala.web;
 
 public class LaisException extends Exception {
 
