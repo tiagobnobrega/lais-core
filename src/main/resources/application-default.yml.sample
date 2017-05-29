@@ -1,0 +1,9 @@
+#Exemplo de arquivo para configurações locais. deve ser renomeado para: "application-default.yml"
+#!!!!!!! NÃO DEVE SER FEITO COMMIT NO REPOSITÓRIO APÓS RENOMEADO !!!!!!!!!!
+laisfala:
+  datasource:
+    laisfala:
+      name: laisfala
+      url: jdbc:/HOST:PORT/SID
+      username: acme
+      password: acme

@@ -56,7 +56,7 @@
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-spring-service-connector</artifactId>
 				</dependency>
-				
+
 				<dependency>
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-cloudfoundry-connector</artifactId>
@@ -101,11 +101,18 @@
 						<version>2.7.0</version>
 				</dependency>
 
-		<!-- SPRING JDBC TEMPLATE -->
+				<!-- SPRING JDBC TEMPLATE -->
 				<dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-jdbc</artifactId>
-        </dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-jdbc</artifactId>
+				</dependency>
+
+				<!-- POSTGRES -->
+				<dependency>
+						<groupId>org.postgresql</groupId>
+						<artifactId>postgresql</artifactId>
+						<version>42.1.1.jre7</version>
+				</dependency>
 
 		</dependencies>
 

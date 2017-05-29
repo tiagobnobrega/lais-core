@@ -16,29 +16,30 @@ import org.springframework.context.annotation.Profile;
 public class DataSourceConfiguration {
 
 	@Bean
+	@Profile("cloud")
 	public Cloud cloud() {
 		return new CloudFactory().getCloud();
 	}
 
 	@Bean
 	@Profile("cloud")
-	@Qualifier("laisDs")
+	@Qualifier("laisfalaDs")
 	public DataSource cloudLaisDatasource() {
+		//Recuperar a partir dos serviços conectados a aplicação
 		return cloud().getSingletonServiceConnector(DataSource.class, null);
 	}
 
 	@Bean
 	@Primary
 	@Profile("default") //Não deve ser instanciado quando em cloud
-	@Qualifier("laisDs")
+	@Qualifier("laisfalaDs")
 	public DataSource localLaisDatasource() {
 		return laisDataSourceProperties().initializeDataSourceBuilder().build();
 	}
 
 	@Bean
 	@Primary
-	@Profile("default")
-	@Qualifier("laisDs")
+	@Profile("default")//Não deve ser instanciado quando em cloud
 	@ConfigurationProperties("laisfala.datasource.laisfala")
 	public DataSourceProperties laisDataSourceProperties() {
 	    return new DataSourceProperties();

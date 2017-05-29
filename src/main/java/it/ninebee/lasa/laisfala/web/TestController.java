@@ -7,10 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import it.ninebee.lasa.laisfala.workspace.WorkspaceService;
 import it.ninebee.lasa.laisfala.workspace.WorkspaceTipoEnum;
 import it.ninebee.lasa.laisfala.workspace.WorkspaceVO;
 
@@ -18,10 +20,16 @@ import it.ninebee.lasa.laisfala.workspace.WorkspaceVO;
 @RequestMapping(value = "api/test")
 public class TestController {
 
+	@Autowired
+	WorkspaceService workspaceService;
+	
 	@RequestMapping(value = "wks", method = RequestMethod.GET)
 	WorkspaceVO wks() {
-		return WorkspaceVO.builder().id("WKS_TESTE").tipo(WorkspaceTipoEnum.WATSON)
-				.connectionString("{\"teste\":\"abcde\"}").dtAlteracao(LocalDateTime.now()).build();
+	
+		return workspaceService.getAll().get(0);
+		
+//		return WorkspaceVO.builder().id("WKS_TESTE").tipo(WorkspaceTipoEnum.WATSON)
+//				.connectionString("{\"teste\":\"abcde\"}").dtAlteracao(LocalDateTime.now()).build();
 	}
 
 	@RequestMapping(value = "rest", method = RequestMethod.GET)
