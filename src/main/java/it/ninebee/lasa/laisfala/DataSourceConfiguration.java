@@ -2,6 +2,8 @@ package it.ninebee.lasa.laisfala;
 
 import javax.sql.DataSource;
 
+import org.skife.jdbi.v2.DBI;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,8 +11,11 @@ import org.springframework.cloud.Cloud;
 import org.springframework.cloud.CloudFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 @Configuration
 public class DataSourceConfiguration {
@@ -21,18 +26,16 @@ public class DataSourceConfiguration {
 		return new CloudFactory().getCloud();
 	}
 
-	@Bean
+	@Bean(name="laisfalaDs")
 	@Profile("cloud")
-	@Qualifier("laisfalaDs")
 	public DataSource cloudLaisDatasource() {
 		//Recuperar a partir dos serviços conectados a aplicação
 		return cloud().getSingletonServiceConnector(DataSource.class, null);
 	}
 
-	@Bean
+	@Bean(name="laisfalaDs")
 	@Primary
 	@Profile("default") //Não deve ser instanciado quando em cloud
-	@Qualifier("laisfalaDs")
 	public DataSource localLaisDatasource() {
 		return laisDataSourceProperties().initializeDataSourceBuilder().build();
 	}
@@ -45,5 +48,19 @@ public class DataSourceConfiguration {
 	    return new DataSourceProperties();
 	}
 	
+//	@Bean("laisfalaTm")
+//	public TransactionAwareDataSourceProxy proxyLaisDatasource(@Autowired @Qualifier("laisfalaDs") DataSource ds){
+//		return new TransactionAwareDataSourceProxy(ds);	
+//	}
+//	
+//	@Bean
+//	public DataSourceTransactionManager laisTransactionManager(@Autowired @Qualifier("laisfalaTm") DataSource ds){
+//		TransactionAwareDataSourceProxy
+//	}
+	
+	@Bean("laisfalaDbi")
+	public DBI lasifalaDbi(@Autowired @Qualifier("laisfalaDs") DataSource ds ){
+		return new DBI(ds);
+	}
 	
 }

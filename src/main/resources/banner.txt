@@ -1,20 +1,17 @@
 
-       
-${AnsiColor.BRIGHT_YELLOW}         ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                                                                                                
-${AnsiColor.BRIGHT_YELLOW}      ▄███████████████████                                                                                              
-${AnsiColor.BRIGHT_YELLOW}     ▄█████████████████████▄                                                                                            
-${AnsiColor.BRIGHT_YELLOW}    ███████▀▀▀▀▀▀▀▀▀▀▀██████▄     ${AnsiColor.WHITE}                  ▄▄                        █                                ▄▄  ▄    
-${AnsiColor.BRIGHT_YELLOW}   ███████             ███████    ${AnsiColor.WHITE}                  ▀▀                        █                                    █▌   
-${AnsiColor.BRIGHT_YELLOW} ▄██████▀   ▄███████▄   ███████   ${AnsiColor.WHITE}      ▐██▄█████▄ ▐██  ██▄▄█████   ▄█████▄   █▄█▀▀▀▀█   █▀▀▀▀▀▄   ▄█▀▀▀▀▄     ██ ▀█▀▀▀ 
-${AnsiColor.BRIGHT_YELLOW}▄██████▀    ▀▀▀▀▀▀▀▀▀    ███████  ${AnsiColor.WHITE}      ▐██    ███ ▐██  ███    ██▌ ██▀   ▐██  █      ▐▌ █▌     ▐▌ █▌     ▐█    █▌  █▌   
-${AnsiColor.BRIGHT_YELLOW}███████▄                 ▐██████▌ ${AnsiColor.WHITE}      ▐██    ▐██ ▐██  ███    ██▌▐█████████  █       █ █▀▀▀▀▀▀▀▀ ██▀▀▀▀▀▀▀    █▌  █▌   
-${AnsiColor.BRIGHT_YELLOW} ████████████████████   ▄███████  ${AnsiColor.WHITE}      ▐██    ▐██ ▐██  ███    ██▌ ██         █      ▐▌ █         █▌           █▌  █▌   
-${AnsiColor.BRIGHT_YELLOW}  ████████▀▀▀▀▀▀▀▀▀▀   ▄██████▀   ${AnsiColor.WHITE}      ▐██    ▐██ ▐██  ███    ██▌  ███████   █▄▄▄▄▄▄▀   ▀▄▄▄▄▄▄   ▀▄▄▄▄▄▄  ██ █▌   █▄▄▄
-${AnsiColor.BRIGHT_YELLOW}   ▀██████▄           ███████                                                                                           
-${AnsiColor.BRIGHT_YELLOW}     ███████████████████████                                                                                            
-${AnsiColor.BRIGHT_YELLOW}      ████████████████████▀                                                                                             
-${AnsiColor.BRIGHT_YELLOW}       ▀▀███████████████▀                                                                                               
+${AnsiColor.BRIGHT_YELLOW}      ,@$llllllllllll$W,
+${AnsiColor.BRIGHT_YELLOW}     /llllllllllllllllllL
+${AnsiColor.BRIGHT_YELLOW}    $lllllF""""""""*lllll&      ${AnsiColor.WHITE}               ,,                      ]-                             ,   ,
+${AnsiColor.BRIGHT_YELLOW}  ,$llll$            $llll$     ${AnsiColor.WHITE}               '"`                     ]-                                 [
+${AnsiColor.BRIGHT_YELLOW} /lllllF   /llllllL   YlllllL   ${AnsiColor.WHITE}     @@g@@B@@r ]@F $@gg@B@@g  g@@NB@g  ]wM"""*N  ,@"""*g   @*""*N     @ ""@""
+${AnsiColor.BRIGHT_YELLOW}{lllllL                }lllllL  ${AnsiColor.WHITE}     $@-   ]@@ ]@F $@P   ]@@ $@P   ]@K ]-     ]L @      K @      $    $   [
+${AnsiColor.BRIGHT_YELLOW}Ylllll&,,,,,,,,,,,,,   ,lllllF  ${AnsiColor.WHITE}     $@    ]@@ ]@F $@P    @$ $@P****** ]-     ]F @""""""" @"""""""    $   [
+${AnsiColor.BRIGHT_YELLOW} \llllllllllllllllF   /lllllF   ${AnsiColor.WHITE}     $@    ]@@ ]@F $@P    @$ ]@@    ,  ]-     $  $        ],          $   @
+${AnsiColor.BRIGHT_YELLOW}  'lllllL            @lllll`    ${AnsiColor.WHITE}     **    '** **^ **^    **   *MMM*"  **MMMM*'   "MMM**   "*MMM*  *  *   "MMM
+${AnsiColor.BRIGHT_YELLOW}    $llll$w,,,,,,,,,$llll$
+${AnsiColor.BRIGHT_YELLOW}     YllllllllllllllllllF
+${AnsiColor.BRIGHT_YELLOW}      "&llllllllllllll$'
 
-${AnsiColor.WHITE} -------------------------------------------------------    
+${AnsiColor.WHITE} -----------------------------------------------------------------------------------------------------------------    
  Application: ${AnsiColor.BRIGHT_CYAN}${application.title}  ${AnsiColor.BRIGHT_RED}${application.formatted-version}
-${AnsiColor.WHITE} -------------------------------------------------------                                                                                                                                  
+${AnsiColor.WHITE} -----------------------------------------------------------------------------------------------------------------                                                                        

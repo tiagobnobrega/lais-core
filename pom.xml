@@ -30,6 +30,18 @@
 		</properties>
 
 		<dependencies>
+				<!-- ACTUATOR -->
+				<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-starter-actuator</artifactId>
+				</dependency>
+
+				<!-- JOLOKIA -->
+				<dependency>
+						<groupId>org.jolokia</groupId>
+						<artifactId>jolokia-core</artifactId>
+				</dependency>
+
 				<!-- CLOUD -->
 				<dependency>
 						<groupId>org.springframework.cloud</groupId>
@@ -43,6 +55,7 @@
 						<groupId>org.springframework.cloud</groupId>
 						<artifactId>spring-cloud-starter-zuul</artifactId>
 				</dependency>
+
 
 				<!-- LOMBOK -->
 				<dependency>
@@ -107,6 +120,13 @@
 						<artifactId>spring-boot-starter-jdbc</artifactId>
 				</dependency>
 
+				<!-- JDBI -->
+				<dependency>
+						<groupId>org.jdbi</groupId>
+						<artifactId>jdbi</artifactId>
+						<version>2.78</version>
+				</dependency>
+
 				<!-- POSTGRES -->
 				<dependency>
 						<groupId>org.postgresql</groupId>
@@ -130,6 +150,10 @@
 
 		<build>
 				<plugins>
+						<plugin>
+								<groupId>pl.project13.maven</groupId>
+								<artifactId>git-commit-id-plugin</artifactId>
+						</plugin>
 						<plugin>
 								<groupId>org.springframework.boot</groupId>
 								<artifactId>spring-boot-maven-plugin</artifactId>

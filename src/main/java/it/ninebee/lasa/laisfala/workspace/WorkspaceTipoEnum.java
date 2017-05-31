@@ -14,7 +14,7 @@ public enum WorkspaceTipoEnum {
 		this.valor=valor;
 	}
 	
-	public WorkspaceTipoEnum from(String v){	
+	public static WorkspaceTipoEnum from(String v){	
 		return Arrays.stream(WorkspaceTipoEnum.values())
 	            .filter(e -> e.valor.equals(v))
 	            .findFirst()

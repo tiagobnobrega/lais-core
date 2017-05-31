@@ -1,10 +1,30 @@
 server:
   port: ${PORT:8080}
+  
+# --- ACTUATOR ---
+management.context-path: /mgmt
+info:
+  app:
+    version: "@project.version@"
+    build-timestamp: "@build.timestamp@"
+    spring-cloud-version: "@spring-cloud.version@" 
+  java:
+    source: "@java.version@"
+  build:
+    source-encoding: "@project.build.sourceEncoding@"
+    out-encoding: "@project.reporting.outputEncoding@"
 
+# --- EUREKA ---
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: ${management.context-path}/info
+    healthCheckUrlPath: ${management.context-path}/health
+    metadataMap:
+      management.context-path: ${management.context-path}
   client:
+    registerWithEureka: true
+    fetchRegistry: true
     registryFetchIntervalSeconds: 5
     serviceUrl:
       defaultZone: ${EUREKA_SERVICE_URL:http://localhost:8761}/eureka/
@@ -20,3 +40,4 @@ spring.jackson:
     ALLOW_COMMENTS: true
     ALLOW_UNQUOTED_FIELD_NAMES: true
     ALLOW_SINGLE_QUOTES: true
+    

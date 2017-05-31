@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -24,9 +25,9 @@ public class TestController {
 	WorkspaceService workspaceService;
 	
 	@RequestMapping(value = "wks", method = RequestMethod.GET)
-	WorkspaceVO wks() {
+	List<WorkspaceVO> wks() {
 	
-		return workspaceService.getAll().get(0);
+		return workspaceService.getAll();
 		
 //		return WorkspaceVO.builder().id("WKS_TESTE").tipo(WorkspaceTipoEnum.WATSON)
 //				.connectionString("{\"teste\":\"abcde\"}").dtAlteracao(LocalDateTime.now()).build();

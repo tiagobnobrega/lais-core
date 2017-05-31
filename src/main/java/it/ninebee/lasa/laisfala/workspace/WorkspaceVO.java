@@ -8,7 +8,7 @@ import lombok.Data;
 @Data
 @Builder
 public class WorkspaceVO {
-
+	
 	private String id;
 	private WorkspaceTipoEnum tipo;
 	private String connectionString;
