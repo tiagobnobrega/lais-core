@@ -9,25 +9,51 @@ import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.ninebee.lasa.laisfala.workspace.WorkspaceService;
-import it.ninebee.lasa.laisfala.workspace.WorkspaceTipoEnum;
-import it.ninebee.lasa.laisfala.workspace.WorkspaceVO;
+import it.ninebee.lasa.laisfala.connector.ConnectorService;
+import it.ninebee.lasa.laisfala.connector.ConnectorVO;
+import it.ninebee.lasa.laisfala.connector.ConnectorTypeEnum;
+import it.ninebee.lasa.laisfala.servicecredentials.ServiceCredentialService;
+import it.ninebee.lasa.laisfala.servicecredentials.ServiceCredentialVO;
+import it.ninebee.lasa.laisfala.watson.WatsonService;
 
 @RestController
 @RequestMapping(value = "api/test")
 public class TestController {
 
 	@Autowired
-	WorkspaceService workspaceService;
+	ConnectorService connService;
 	
-	@RequestMapping(value = "wks", method = RequestMethod.GET)
-	List<WorkspaceVO> wks() {
+	@Autowired
+	WatsonService watsonService;
 	
-		return workspaceService.getAll();
+	@Autowired
+	ServiceCredentialService credentialService;
+	
+	@RequestMapping(value = "credential/{id}", method = RequestMethod.GET)
+	ServiceCredentialVO serviceCredential(@PathVariable("id") String id){
+		ServiceCredentialVO cred = credentialService.getById(id);
+		return cred;
+	}
+	
+	@RequestMapping(value = "watson", method = RequestMethod.GET)
+	//FIXME AVALIAR porque do erro quando o controller retorna uma string
+//	String watson() {
+	Map<String,Object> watson(){
+		watsonService.test();
+		Map<String,Object> ret = new HashMap<String,Object>();
+		ret.put("message", "OK!!!!!");
+		return ret;
+	}
+	
+	@RequestMapping(value = "connector", method = RequestMethod.GET)
+	List<ConnectorVO> connector() {
+	
+		return connService.getAll();
 		
 //		return WorkspaceVO.builder().id("WKS_TESTE").tipo(WorkspaceTipoEnum.WATSON)
 //				.connectionString("{\"teste\":\"abcde\"}").dtAlteracao(LocalDateTime.now()).build();

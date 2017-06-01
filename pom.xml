@@ -56,7 +56,6 @@
 						<artifactId>spring-cloud-starter-zuul</artifactId>
 				</dependency>
 
-
 				<!-- LOMBOK -->
 				<dependency>
 						<groupId>org.projectlombok</groupId>
@@ -114,7 +113,7 @@
 						<version>2.7.0</version>
 				</dependency>
 
-				<!-- SPRING JDBC TEMPLATE -->
+				<!-- JDBC TEMPLATE -->
 				<dependency>
 						<groupId>org.springframework.boot</groupId>
 						<artifactId>spring-boot-starter-jdbc</artifactId>
@@ -132,6 +131,19 @@
 						<groupId>org.postgresql</groupId>
 						<artifactId>postgresql</artifactId>
 						<version>42.1.1.jre7</version>
+				</dependency>
+				
+				<!-- H2 -->
+				<dependency>
+						<groupId>com.h2database</groupId>
+						<artifactId>h2</artifactId>
+				</dependency>
+
+				<!-- WATSON CONVERSATION -->
+				<dependency>
+						<groupId>com.ibm.watson.developer_cloud</groupId>
+						<artifactId>conversation</artifactId>
+						<version>3.8.0</version>
 				</dependency>
 
 		</dependencies>

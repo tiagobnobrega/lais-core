@@ -1,4 +1,4 @@
-package it.ninebee.lasa.laisfala.workspace;
+package it.ninebee.lasa.laisfala.connector;
 
 import java.util.List;
 
@@ -8,19 +8,16 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WorkspaceService {
+public class ConnectorService {
 
 	@Autowired
 	@Qualifier("laisfalaDbi")
 	DBI laisfalaDbi;
 	
-	@Autowired
-	WorkspaceDAO workspaceDao;
-	
-	public List<WorkspaceVO> getAll(){
+	public List<ConnectorVO> getAll(){
 		return laisfalaDbi.withHandle((h) -> {
-				WorkspaceDAO wksDao =  h.attach(WorkspaceDAO.class);
-				return wksDao.getAll();
+				IConnectorDAO connDao =  h.attach(IConnectorDAO.class);
+				return connDao.getAll();
 		});
 	}
 	
