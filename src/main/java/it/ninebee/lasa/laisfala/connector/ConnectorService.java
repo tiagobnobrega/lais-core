@@ -21,4 +21,12 @@ public class ConnectorService {
 		});
 	}
 	
+	//FIXME Implmentar cache de connector
+	public ConnectorVO getById(final String id){
+		return laisfalaDbi.withHandle((h) -> {
+			IConnectorDAO connDao =  h.attach(IConnectorDAO.class);
+			return connDao.getById(id);
+	});
+	}
+	
 }

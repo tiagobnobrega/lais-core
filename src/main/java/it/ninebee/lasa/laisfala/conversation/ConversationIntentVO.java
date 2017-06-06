@@ -1,15 +1,13 @@
 package it.ninebee.lasa.laisfala.conversation;
 
-import java.math.BigDecimal;
-
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
-@Builder
+@AllArgsConstructor
 public class ConversationIntentVO {
 
-	private BigDecimal confidence;
-	private String id;
+	private double confidence;
+	private String intent;
 	
 }

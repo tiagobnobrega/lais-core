@@ -26,7 +26,7 @@ public class SpringfoxConfiguration {
 	
 	
 	@Bean
-	  public Docket petApi() {
+	  public Docket docket() {
 		return new Docket(DocumentationType.SWAGGER_2)
 		        .select()
 		          .apis(RequestHandlerSelectors.any())
@@ -57,7 +57,7 @@ public class SpringfoxConfiguration {
 	        "alpha",      
 	        "model",     
 	        UiConfiguration.Constants.DEFAULT_SUBMIT_METHODS,
-	        true,
+	        false,
 	        true,     
 	        60000L);
 	  }

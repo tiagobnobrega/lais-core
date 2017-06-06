@@ -1,6 +1,7 @@
 package it.ninebee.lasa.laisfala.conversation;
 
-import com.sun.javafx.collections.MappingChange.Map;
+import java.util.List;
+import java.util.Map;
 
 import lombok.Builder;
 import lombok.Data;
@@ -12,6 +13,8 @@ public class ConversationResponseVO {
 	private String id;
 	private String contextId;
 	private Map<String,Object> context;
+	private List<ConversationEntityVO> entities;
+	private List<ConversationIntentVO> intents;
 	private Map<String,Object> extendendAttributes;
 	
 }

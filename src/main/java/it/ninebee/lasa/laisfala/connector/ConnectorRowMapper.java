@@ -8,6 +8,7 @@ import org.skife.jdbi.v2.tweak.ResultSetMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import it.ninebee.lasa.laisfala.servicecredentials.ServiceCredentialRowMapper;
 import it.ninebee.lasa.laisfala.servicecredentials.ServiceCredentialVO;
 
 public class ConnectorRowMapper implements ResultSetMapper<ConnectorVO> {
@@ -22,14 +23,14 @@ public class ConnectorRowMapper implements ResultSetMapper<ConnectorVO> {
 				.id(rs.getString("co_credential"))
 				.build();
 		
-		ConnectorVO wks = ConnectorVO.builder()
+		ConnectorVO conn = ConnectorVO.builder()
 				.id(rs.getString("co_connector"))
 				.credential(credential)
 				.attributes(rs.getString("de_attributes"))
 				.dhAlteracao(rs.getTimestamp("dh_alteracao").toLocalDateTime())
 				.type(ConnectorTypeEnum.from(rs.getString("co_type")))
 				.build();
-		return wks;
+		return conn;
 	}
 
 }

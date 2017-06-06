@@ -10,12 +10,18 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import it.ninebee.lasa.laisfala.connector.ConnectorService;
 import it.ninebee.lasa.laisfala.connector.ConnectorVO;
+import it.ninebee.lasa.laisfala.conversation.ConversationRequestVO;
+import it.ninebee.lasa.laisfala.conversation.ConversationResponseVO;
+import it.ninebee.lasa.laisfala.conversation.ConversationServiceCreationException;
+import it.ninebee.lasa.laisfala.conversation.service.ConversationServiceManager;
+import it.ninebee.lasa.laisfala.conversation.service.IConversationService;
 import it.ninebee.lasa.laisfala.connector.ConnectorTypeEnum;
 import it.ninebee.lasa.laisfala.servicecredentials.ServiceCredentialService;
 import it.ninebee.lasa.laisfala.servicecredentials.ServiceCredentialVO;
@@ -29,7 +35,7 @@ public class TestController {
 	ConnectorService connService;
 	
 	@Autowired
-	WatsonService watsonService;
+	ConversationServiceManager csManager;
 	
 	@Autowired
 	ServiceCredentialService credentialService;
@@ -39,16 +45,14 @@ public class TestController {
 		ServiceCredentialVO cred = credentialService.getById(id);
 		return cred;
 	}
+
 	
-	@RequestMapping(value = "watson", method = RequestMethod.GET)
-	//FIXME AVALIAR porque do erro quando o controller retorna uma string
-//	String watson() {
-	Map<String,Object> watson(){
-		watsonService.test();
-		Map<String,Object> ret = new HashMap<String,Object>();
-		ret.put("message", "OK!!!!!");
-		return ret;
+	@RequestMapping(value = "fala", method = RequestMethod.POST)
+	ConversationResponseVO fala(@RequestBody ConversationRequestVO request) throws ConversationServiceCreationException{
+		IConversationService convServ =  csManager.getServiceFor(request);
+		return convServ.call(request);
 	}
+	
 	
 	@RequestMapping(value = "connector", method = RequestMethod.GET)
 	List<ConnectorVO> connector() {

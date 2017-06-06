@@ -20,4 +20,8 @@ public enum ConnectorTypeEnum {
 	            .findFirst()
 	            .orElseThrow(() -> new IllegalStateException(String.format("Unsupported type %s.", v)));
 	}
+	
+	public String getValue(){
+		return this.value;
+	}
 }
