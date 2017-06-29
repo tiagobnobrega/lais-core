@@ -19,7 +19,11 @@ import it.ninebee.lasa.laisfala.conversation.ConversationResponseVO;
 public class WatsonMessageConverter {
 
 	public static MessageRequest convertToMessageRequest(ConversationRequestVO request) {
-		List<Entity> lstEntities = request.getEntities().stream().map(WatsonMessageConverter::toWatsonEntity).collect(Collectors.toList());
+		List<Entity> lstEntities = null;
+		if(request.getEntities()!=null){
+			lstEntities = request.getEntities().stream().map(WatsonMessageConverter::toWatsonEntity).collect(Collectors.toList());	
+		}
+		
 //		List<Intent> lstIntents = request.getIntents().stream().map(WatsonMessageConverter::toWatsonIntent).collect(Collectors.toList());
 			 
 		
@@ -27,6 +31,7 @@ public class WatsonMessageConverter {
 				.inputText(request.getInputText())
 				.context(request.getContext())
 				.entities(lstEntities)
+				.alternateIntents(true)
 //				.intents(lstIntents)
 				.build();
 		return req;

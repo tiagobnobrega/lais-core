@@ -19,7 +19,7 @@ public class LuisServiceFactory implements IConversationServiceFactory {
 	@Autowired
 	ObjectMapper mapper;
 
-	private static String CONNECTOR_TYPE = "WATSON";
+	private static String CONNECTOR_TYPE = "LUIS";
 
 	@Override
 	public IConversationService createFrom(ConnectorVO connector) throws ConversationServiceCreationException {

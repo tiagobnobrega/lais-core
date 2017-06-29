@@ -28,11 +28,11 @@ public class LuisResponseConverter {
 	}
 	
 	public static ConversationEntityVO toLaisEntity(LuisEntity e){
-		return new ConversationEntityVO(e.getType(), new Integer[]{e.getStartIndex(),e.getEndIndex()}, e.getName());
+		return new ConversationEntityVO(e.getType(), new Integer[]{e.getStartIndex(),e.getEndIndex()}, e.getEntity());
 	};
 	
 	public static ConversationIntentVO toLaisIntent(LuisIntent i){
-		return new ConversationIntentVO(i.getScore(), i.getName());
+		return new ConversationIntentVO(i.getScore(), i.getIntent());
 	};
 	
 	public static Map<String,Object> mapExtendedAttributes(LuisResponse resp){

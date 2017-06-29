@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class LuisIntent {
 
-   private String name;
+   private String intent;
    private double score;
 }

@@ -4,6 +4,7 @@ laisfala:
   datasource:
     laisfala:
       name: laisfala
-      url: jdbc:/HOST:PORT/SID
-      username: acme
-      password: acme
+       url: "jdbc:postgresql://ec2-54-221-244-196.compute-1.amazonaws.com:5432/ddjshokmu0gqsh?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
+      username: uitkglgtmtapiq
+      password: a91bd500e3954e1cd41d715e9bcf0e6d91ed17c11c7c94a0017176d63b93e835
+      driver-class-name: org.postgresql.Driver

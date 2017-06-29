@@ -47,12 +47,6 @@ public class TestController {
 	}
 
 	
-	@RequestMapping(value = "fala", method = RequestMethod.POST)
-	ConversationResponseVO fala(@RequestBody ConversationRequestVO request) throws ConversationServiceCreationException{
-		IConversationService convServ =  csManager.getServiceFor(request);
-		return convServ.call(request);
-	}
-	
 	
 	@RequestMapping(value = "connector", method = RequestMethod.GET)
 	List<ConnectorVO> connector() {

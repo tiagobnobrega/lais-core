@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 import javax.annotation.PostConstruct;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -72,6 +73,8 @@ public class ConversationServiceManager {
 	
 	//FIXME Implementar CACHE para serviços !!!!!!!!!!! 
 	public IConversationService getServiceFor(ConnectorVO conn) throws ConversationServiceCreationException{
+		if(conn==null) throw new ConversationServiceCreationException("Erro creating service for null connector");
+		
 		IConversationServiceFactory factory = mappedFactories.get(conn.getType());
 		IConversationService service  = factory.createFrom(conn);
 		return service;
@@ -79,7 +82,10 @@ public class ConversationServiceManager {
 	
 	//FIXME Implementar CACHE para serviços !!!!!!!!!!! 
 		public IConversationService getServiceFor(ConversationRequestVO request) throws ConversationServiceCreationException{
-			ConnectorVO conn = connService.getById(request.getConnectorId());
+			String connId = request.getConnectorId();
+			if(StringUtils.isBlank(connId)) throw new ConversationServiceCreationException("Connector id not specified.");
+			ConnectorVO conn = connService.getById(connId);
+			if(conn==null) throw new ConversationServiceCreationException(String.format("Could not find connector with id: %s", connId));
 			return getServiceFor(conn);
 		}
 }

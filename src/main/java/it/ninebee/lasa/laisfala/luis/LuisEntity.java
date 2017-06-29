@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class LuisEntity {
 
-   private String name;
+   private String entity;
    private String type;
    private int startIndex;
    private int endIndex;

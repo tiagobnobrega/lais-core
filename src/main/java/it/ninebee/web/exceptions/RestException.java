@@ -69,6 +69,7 @@ public class RestException extends Exception {
 	}
 
 	public Map<String, Object> getRequest() {
+		if(httpRequest==null) return null;
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("contentType", httpRequest.getContentType());
 		map.put("contentLength", httpRequest.getContentLength());

@@ -1,7 +1,9 @@
 package it.ninebee.web.util;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -64,8 +66,8 @@ public class RestEnvelopeControllerAdvise extends DefaultHandlerExceptionResolve
 	
 	@ExceptionHandler({
 		HttpMessageNotReadableException.class})
-	public static ResponseEntity<Object> handleBadRequest(Exception ex) {
-	    return handleExceptionInternal(ex, HttpStatus.BAD_REQUEST);    
+	public static ResponseEntity<Object> handleBadRequest(Exception ex,  HttpServletRequest request) {
+	    return handleExceptionInternal(ex, HttpStatus.BAD_REQUEST, request);    
 	}
 
 	@ExceptionHandler(NoHandlerFoundException.class)
@@ -85,7 +87,7 @@ public class RestEnvelopeControllerAdvise extends DefaultHandlerExceptionResolve
 	
 	@ExceptionHandler(Exception.class)
 	  public static ResponseEntity<Object> handleOtherExceptions(Exception ex,  HttpServletRequest request) {
-		logger.error("Erro na requisicao",ex);
+		logger.trace("Erro na requisicao",ex);
 	    return handleExceptionInternal(ex, HttpStatus.INTERNAL_SERVER_ERROR, request);    
 	  }
 	
@@ -106,9 +108,24 @@ public class RestEnvelopeControllerAdvise extends DefaultHandlerExceptionResolve
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
 		ResponseEntity<Object> resp = new ResponseEntity<Object>(envelope, headers, httpStatus);
+//		logRequestBody(request);
 		return resp;
 	}
 
+//	 Não é possível ler o corpo da requisição neste momento. Teria que fazer um filtro que fizesse um wrap da request. No way! 
+//	private static void logRequestBody(HttpServletRequest request){
+//		
+//		if(logger.isTraceEnabled()){
+//			String body;
+//			try {
+//				body = request.getReader().lines().collect(Collectors.joining());
+//				logger.trace(body);
+//			} catch (Exception e) {
+//				logger.trace("Error reading request content",e);
+//			}	
+//		}
+//	}
+	 
 	private static RestEnvelope envelopeException(Exception ex, HttpServletRequest request, HttpStatus httpStatus){
 		RestEnvelope envelope = new RestEnvelope();
 		
@@ -172,7 +189,6 @@ public class RestEnvelopeControllerAdvise extends DefaultHandlerExceptionResolve
 		try{
 			String accept = req.getHeader(HttpHeaders.ACCEPT);
 			//verificar cabeçalho da requisição
-			logger.info("accept="+accept);
 			if(accept.indexOf("application/json")>-1){
 				return true;
 			}
